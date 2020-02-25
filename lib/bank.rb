@@ -41,7 +41,16 @@ class Bank
     end
 
     def self.customer_count
-        
+        result = {}
+
+        all.each_entry {|bank| result[bank.name] = bank.customers.size}
+        result
+    end
+
+    def self.average_customer_age
+       Customer.all.reduce(0) {|sum, customer| sum += customer.age} / Customer.all.size
+    binding.pry
+    
     end
 
 end 
